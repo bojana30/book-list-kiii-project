@@ -1,9 +1,10 @@
 # dependencies
 node_modules
 
-# env files (IMPORTANT)
+# env files
 .env
 .env.*
+!.env.example
 
 # build outputs
 build
