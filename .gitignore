@@ -1,2 +1,22 @@
+# dependencies
 node_modules
+
+# env files (IMPORTANT)
 .env
+.env.*
+
+# build outputs
+build
+dist
+
+# docker data (database volume local fallback)
+pgdata
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
