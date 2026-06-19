@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: book-list-config
+  namespace: book-list
+data:
+  PGHOST: "postgres-service"
+  PGPORT: "5432"
+  PGDATABASE: "books"
+  PORT: "8000"

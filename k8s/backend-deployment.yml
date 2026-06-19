@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: book-list
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: bojana3011/book-list-backend:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: PGHOST
+              valueFrom:
+                configMapKeyRef:
+                  name: book-list-config
+                  key: PGHOST
+            - name: PGPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: book-list-config
+                  key: PGPORT
+            - name: PGDATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: book-list-config
+                  key: PGDATABASE
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: book-list-config
+                  key: PORT
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: book-list-secret
+                  key: PGUSER
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: book-list-secret
+                  key: PGPASSWORD
