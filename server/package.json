@@ -1,5 +1,5 @@
 {
-  "name": "todo",
+  "name": "book-list-backend",
   "version": "1.0.0",
   "description": "A PERN stack based todo app",
   "main": "index.js",
