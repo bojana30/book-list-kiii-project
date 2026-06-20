@@ -15,7 +15,7 @@ const BookInput = () => {
                 status: "unread"
             };
 
-            await fetch("http://localhost:8000/books", {
+            await fetch("/api/books", {
                 method: "POST",
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify(body)

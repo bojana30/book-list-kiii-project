@@ -15,7 +15,7 @@ function EditBook({book}) {
                 title, author, status
             };
 
-            await fetch(`http://localhost:8000/books/${book.book_id}`, {
+            await fetch(`/api/books/${book.book_id}`, {
                 method: "PUT", headers: {"Content-type": "application/json"}, body: JSON.stringify(body)
             });
 

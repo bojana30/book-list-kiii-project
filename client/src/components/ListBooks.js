@@ -8,7 +8,7 @@ const ListBooks = () => {
     // delete a book
     const deleteBook = async (id) => {
         try {
-            await fetch(`http://localhost:8000/books/${id}`, {
+            await fetch(`/api/books/${id}`, {
                 method: "DELETE"
             });
 
@@ -22,7 +22,7 @@ const ListBooks = () => {
 
     const getBooks = async () => {
         try {
-            const response = await fetch("http://localhost:8000/books");
+            const response = await fetch("/api/books");
             const jsonData = await response.json();
             setBooks(jsonData);
         } catch (err) {

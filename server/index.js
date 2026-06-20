@@ -13,7 +13,7 @@ app.use(express.json());
 // ROUTES
 
 // create a book
-app.post('/books', async (req, res) => {
+app.post('/api/books', async (req, res) => {
     try {
         const { title, author, status } = req.body;
 
@@ -30,14 +30,14 @@ app.post('/books', async (req, res) => {
 
 
 // get all books
-app.get('/books', async (req, res) => {
+app.get('/api/books', async (req, res) => {
     const books = await pool.query("SELECT * FROM books");
     res.json(books.rows);
 });
 
 
 // get a book
-app.get('/books/:id', async (req, res) => {
+app.get('/api/books/:id', async (req, res) => {
     const book = await pool.query(
         "SELECT * FROM books WHERE book_id = $1",
         [req.params.id]
@@ -47,8 +47,8 @@ app.get('/books/:id', async (req, res) => {
 });
 
 
-// update a booklist
-app.put('/books/:id', async (req, res) => {
+// update a book
+app.put('/api/books/:id', async (req, res) => {
     const { title, author, status } = req.body;
 
     const updated = await pool.query(
@@ -61,7 +61,7 @@ app.put('/books/:id', async (req, res) => {
 
 
 // delete a book
-app.delete('/books/:id', async (req, res) => {
+app.delete('/api/books/:id', async (req, res) => {
     const deleted = await pool.query(
         "DELETE FROM books WHERE book_id=$1 RETURNING *",
         [req.params.id]

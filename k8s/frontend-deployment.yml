@@ -21,3 +21,5 @@ spec:
           env:
             - name: REACT_APP_API_URL
               value: "http://backend-service:8000"
+            - name: DANGEROUSLY_DISABLE_HOST_CHECK
+              value: "true"
