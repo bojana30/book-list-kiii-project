@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from "react";
-
+import API from "../api";
 
 const BookInput = () => {
 
@@ -15,7 +15,7 @@ const BookInput = () => {
                 status: "unread"
             };
 
-            await fetch("/api/books", {
+            await fetch(`${API}/api/books`, {
                 method: "POST",
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify(body)

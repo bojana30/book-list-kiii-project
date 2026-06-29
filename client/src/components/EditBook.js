@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react';
+import API from "../api";
 
 function EditBook({book}) {
 
@@ -15,7 +16,7 @@ function EditBook({book}) {
                 title, author, status
             };
 
-            await fetch(`/api/books/${book.book_id}`, {
+            await fetch(`${API}/api/books/${book.book_id}`, {
                 method: "PUT", headers: {"Content-type": "application/json"}, body: JSON.stringify(body)
             });
 

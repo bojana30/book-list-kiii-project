@@ -1,34 +1,33 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import EditBook from './EditBook';
+import API from "../api";
 
 const ListBooks = () => {
-
     const [books, setBooks] = useState([]);
 
-    // delete a book
-    const deleteBook = async (id) => {
-        try {
-            await fetch(`/api/books/${id}`, {
-                method: "DELETE"
-            });
-
-            // remove deleted book from state
-            setBooks(books.filter(book => book.book_id !== id));
-
-        } catch (err) {
-            console.error(err.message);
-        }
-    }
-
+    // GET books
     const getBooks = async () => {
         try {
-            const response = await fetch("/api/books");
+            const response = await fetch(`${API}/api/books`);
             const jsonData = await response.json();
             setBooks(jsonData);
         } catch (err) {
             console.error(err.message);
         }
-    }
+    };
+
+    //delete a book
+    const deleteBook = async (id) => {
+        try {
+            await fetch(`${API}/api/books/${id}`, {
+                method: "DELETE"
+            });
+
+            setBooks(books.filter(book => book.book_id !== id));
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
 
     useEffect(() => {
         getBooks();
@@ -72,6 +71,6 @@ const ListBooks = () => {
             </table>
         </Fragment>
     );
-}
+};
 
 export default ListBooks;
